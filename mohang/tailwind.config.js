@@ -14,7 +14,9 @@ module.exports = {
         festival:'#FFF7AE',
         food:'#76C735',
         music:'#3C7CB8',
-        extra:'#8C4EBD'
+        extra:'#8C4EBD',
+        inputborder:'FFE1A9',
+        inputBg:'FFFBF4'
       }
     },
   },
