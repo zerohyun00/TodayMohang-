@@ -1,8 +1,5 @@
-
 function Home() {
-  return (
-    <section className="text-4xl text-primary">Hi</section>
-  )
+  return <section className="text-4xl text-primary">Hi</section>;
 }
 
-export default Home
+export default Home;
