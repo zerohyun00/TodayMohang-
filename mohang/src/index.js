@@ -6,6 +6,8 @@ import App from "./App";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import Mypage from "./pages/Mypage";
+import Bookmark from "./pages/Bookmark";
+import MyEvent from "./pages/MyEvent";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/mypage",
         element: <Mypage />,
+      },
+      {
+        path: "/bookmark",
+        element: <Bookmark />,
+      },
+      {
+        path: "/myEvent",
+        element: <MyEvent />,
       },
     ],
   },
