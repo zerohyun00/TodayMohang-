@@ -6,8 +6,8 @@ export const Header = tw.header`
   text-2xl
   leading-11
   tracking-tight
-  mt-20
-  mb-10
+  mt-10 sm:mt-20 
+  mb-5
 `;
 
 export const Form = tw.form`
@@ -17,7 +17,7 @@ export const Form = tw.form`
 `;
 
 export const Label = tw.label`
-  mb-4
+  mb-3 sm:mb-4 
   block
   text-left
   pb-2
@@ -36,7 +36,7 @@ export const Input = tw.input`
   ease-out
   box-border
   my-0
-  mb-5
+  mb-4 sm:mb-5 
   w-full
   text-black
   bg-inputBg
@@ -47,7 +47,7 @@ export const Input = tw.input`
 `;
 
 export const Button = tw.button`
-  mb-3
+  mb-4 sm:mb-3 
   w-full
   max-w-full
   text-black
@@ -86,7 +86,7 @@ export const Success = tw.div`
 export const LinkContainer = tw.p`
   text-sm
   text-gray-600
-  my-0
+  my-2 sm:my-0 
   mx-auto
   mb-2
   w-64
@@ -94,9 +94,8 @@ export const LinkContainer = tw.p`
 `;
 
 export const Link = tw.a`
-  text-blue-600
   no-underline
   font-semibold
-
   hover:underline
+  cursor-pointer
 `;
