@@ -1,0 +1,37 @@
+[
+  {
+    "category": "주점",
+    "title": "가을 공연",
+    "team": "아트 러버",
+    "date": "2024-01-07",
+    "image_url": "https://dummyimage.com/600x400/8C0401.jpg"
+  },
+  {
+    "category": "축제",
+    "title": "밤하늘 주점",
+    "team": "밤의 왕자들",
+    "date": "2023-11-27",
+    "image_url": "https://dummyimage.com/600x400/ABC88C.jpg"
+  },
+  {
+    "category": "축제",
+    "title": "희망 축제",
+    "team": "멜로디 메이커스",
+    "date": "2023-11-29",
+    "image_url": "https://dummyimage.com/600x400/9EF2D2.jpg"
+  },
+  {
+    "category": "전시/공연",
+    "title": "미술 전시회",
+    "team": "아트 러버",
+    "date": "2024-01-14",
+    "image_url": "https://dummyimage.com/600x400/0F4740.jpg"
+  },
+  {
+    "category": "기타",
+    "title": "밤하늘 주점",
+    "team": "팀 하모니",
+    "date": "2024-01-17",
+    "image_url": "https://dummyimage.com/600x400/1C608C.jpg"
+  }
+]

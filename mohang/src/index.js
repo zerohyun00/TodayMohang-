@@ -9,6 +9,7 @@ import Mypage from "./pages/Mypage";
 import Bookmark from "./pages/Bookmark";
 import MyEvent from "./pages/MyEvent";
 import Home from "./pages/Home";
+import TodayEvents from "./pages/TodayEvents";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/myEvent",
         element: <MyEvent />,
+      },
+      {
+        path: "/today",
+        element: <TodayEvents />,
       },
     ],
   },
