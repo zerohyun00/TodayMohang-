@@ -7,7 +7,7 @@ export const Header = tw.header`
   leading-11
   tracking-tight
   mt-10 sm:mt-20 
-  mb-5
+  mb-14
 `;
 
 export const Form = tw.form`
@@ -73,9 +73,13 @@ export const Button = tw.button`
 `;
 
 export const Error = tw.div`
+   flex
+  items-center
+  justify-center
   text-red-600
   my-2
   font-bold
+  min-h-8 
 `;
 
 export const Success = tw.div`
@@ -91,6 +95,11 @@ export const LinkContainer = tw.p`
   mb-2
   w-64
   max-w-xs
+  flex 
+  items-center 
+  justify-center
+  
+
 `;
 
 export const Link = tw.a`

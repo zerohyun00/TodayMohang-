@@ -8,11 +8,13 @@ import {
   Label,
   LinkContainer,
   Success,
-  Link,
 } from "../styles/login_styles";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import React, { useCallback, useState } from "react";
-import Icons from "../components/Icons";
+import LogInLogos from "../assets/images/LogInLogos.png";
+import beforecheck from "../assets/images/beforecheck.png";
+import check from "../assets/images/check.png";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState(false);
@@ -49,7 +51,7 @@ const SignUp = () => {
         setSignUpError(false);
         setSignUpSuccess(false);
         axios
-          .post("/api/users", { email, nickname, password })
+          .post("/api/users", { nickname, email, password })
           .then(() => {
             setSignUpSuccess(true);
           })
@@ -66,27 +68,17 @@ const SignUp = () => {
       id="container"
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
     >
-      <div className="flex items-center justify-center mb-0">
-        <Icons />
-      </div>
+      <img
+        src={LogInLogos}
+        alt="LogInLogos"
+        className="mx-auto my-auto"
+      />
       <Header>회원가입</Header>
       <Form onSubmit={onSubmit}>
-        <Label id="email-label">
-          <span>이메일 주소</span>
-          <div>
+        <Label id="nickname-label" className="relative" >
+          <div className="flex items-center">
             <Input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={onChangeEmail}
-            />
-          </div>
-        </Label>
-        <Label id="nickname-label">
-          <span>닉네임</span>
-          <div>
-            <Input
+              placeholder="닉네임"
               type="text"
               id="nickname"
               name="nickname"
@@ -95,10 +87,35 @@ const SignUp = () => {
             />
           </div>
         </Label>
-        <Label id="password-label">
-          <span>비밀번호</span>
-          <div>
+        <Label id="email-label" className="relative">
+          <div className="flex items-center">
             <Input
+              placeholder="이메일"
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={onChangeEmail}
+            />
+              {email.includes('@') ? (
+              <img
+                src={check}
+                alt="check"
+                className="absolute right-2 top-1/3 transform -translate-y-1/2"
+              />
+            ) : (
+              <img
+                src={beforecheck}
+                alt="beforecheck"
+                className="absolute right-2 top-1/3 transform -translate-y-1/2"
+              />
+            )}       
+          </div>
+        </Label>
+        <Label id="password-label" className="relative">
+          <div className="flex items-center">
+            <Input
+              placeholder="비밀번호"
               type="password"
               id="password"
               name="password"
@@ -107,30 +124,39 @@ const SignUp = () => {
             />
           </div>
         </Label>
-        <Label id="password-check-label">
-          <span>비밀번호 확인</span>
-          <div>
+        <Label id="password-check-label" className="relative">
+          <div className="flex items-center">
             <Input
+              placeholder="비밀번호 확인"
               type="password"
               id="password-check"
               name="password-check"
               value={passwordCheck}
               onChange={onChangePasswordCheck}
-            />
+            />{passwordCheck && passwordCheck === password ? (
+              <img
+                src={check}
+                alt="check"
+                className="absolute right-2 top-1/3 transform -translate-y-1/2"
+              />
+            ) : (
+              <img
+                src={beforecheck}
+                alt="beforecheck"
+                className="absolute right-2 top-1/3 transform -translate-y-1/2"
+              />
+            )}            
           </div>
-          {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
-          {nickname && <Error>닉네임을 입력해주세요.</Error>}
-          {signUpError && <Error>이미 가입된 이메일입니다.</Error>}
+          {signUpError && <Error>이미 가입된 이메일입니다. </Error>}
           {signUpSuccess && (
             <Success>회원가입되었습니다! 로그인해주세요.</Success>
           )}
         </Label>
-        <Button type="submit">회원가입</Button>
+        <Button type="submit">회원가입 하기</Button>
       </Form>
       <LinkContainer>
-        이미 회원이신가요?&nbsp;
-        <Link to="/LogIn" className="black">
-          로그인 하러가기
+        <Link to="/Login" className="black mt-7">
+          로그인하러 가기
         </Link>
       </LinkContainer>
     </div>

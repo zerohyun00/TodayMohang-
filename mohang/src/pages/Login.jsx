@@ -11,7 +11,7 @@ import {
 } from "../styles/login_styles";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Icons from "../components/Icons";
+import LogInLogos from "../assets/images/LogInLogos.png";
 
 const LogIn = () => {
   const [logInError, setLogInError] = useState(false);
@@ -50,16 +50,17 @@ const LogIn = () => {
       id="container"
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-24"
     >
-      <div className="flex items-center justify-center">
-        <Icons />
-      </div>
+      <img
+        src={LogInLogos}
+        alt="LogInLogos"
+        className="mx-auto my-auto"
+      />
       <Header>로그인</Header>
       <Form onSubmit={onSubmit}>
         <Label id="email-label">
-          <span>이메일</span>
           <div>
             <Input
-              placeholder="이메일을 입력하세요"
+              placeholder="이메일"
               type="email"
               id="email"
               name="email"
@@ -69,10 +70,9 @@ const LogIn = () => {
           </div>
         </Label>
         <Label id="password-label">
-          <span>비밀번호</span>
           <div>
             <Input
-              placeholder="비밀번호를 입력하세요"
+              placeholder="비밀번호"
               type="password"
               id="password"
               name="password"
@@ -84,12 +84,11 @@ const LogIn = () => {
             <Error>이메일과 비밀번호 조합이 일치하지 않습니다.</Error>
           )}
         </Label>
-        <Button type="submit">로그인</Button>
+        <Button type="submit">로그인 하기</Button>
       </Form>
       <LinkContainer>
-        아직 회원이 아니신가요?&nbsp;
-        <Link to="/signup" className="black">
-          회원가입 하러가기
+        <Link to="/signup" className="black mt-7">
+          회원가입하기
         </Link>
       </LinkContainer>
     </div>
