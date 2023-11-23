@@ -3,7 +3,7 @@ import { BASE_URL } from "../static";
 
 export function HandleRegister() {
   axios
-    .post(`${BASE_URL}/auth/register`)
+    .post(`${BASE_URL}/auth/signup`)
     .then((res) => {
       console.log(res);
     })
