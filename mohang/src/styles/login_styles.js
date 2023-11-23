@@ -14,10 +14,11 @@ export const Form = tw.form`
   mx-auto
   w-96
   max-w-xs
+  p-2
 `;
 
 export const Label = tw.label`
-  mb-3 sm:mb-4 
+  mb-1 sm:mb-4 
   block
   text-left
   pb-2
@@ -27,7 +28,7 @@ export const Label = tw.label`
 `;
 
 export const Input = tw.input`
-  rounded-2xl
+  rounded-lg
   border
   border-solid
   border-primary
@@ -40,7 +41,7 @@ export const Input = tw.input`
   w-full
   text-black
   bg-inputBg
-  p-3
+  p-5
   h-11
   focus:border-highlight
   focus:shadow-outline
@@ -52,7 +53,6 @@ export const Button = tw.button`
   max-w-full
   text-black
   bg-secondary
-  border-none
   text-lg
   hover:bg-primary
   hover:text-black
@@ -67,9 +67,12 @@ export const Button = tw.button`
   outline-none
   cursor-pointer
   rounded-full
+  rounded-lg // Apply rounded-lg
+  border // Apply border
   shadow-md
   focus:shadow-outline
   focus:border-highlight
+
 `;
 
 export const Error = tw.div`
