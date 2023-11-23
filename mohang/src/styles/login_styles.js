@@ -14,7 +14,7 @@ export const Form = tw.form`
   mx-auto
   w-96
   max-w-xs
-  p-6
+  p-2
 `;
 
 export const Label = tw.label`

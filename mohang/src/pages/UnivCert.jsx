@@ -55,15 +55,16 @@ const UnivCert = () => {
   );
 
   return (
-    <section className="flex flex-col px-[22px] py-4 h-[100vh]">
     <div id="container">
-      <Link>
+      <section className="flex flex-col px-[22px] py-4">
+      <Link to="#">
       <img
         src={backIcon}
         alt="backIcon"
-        className=" object-cover w-[30px] h-[30px] mt-[10px]"
+        className=" object-cover w-[30px] h-[30px] mt-[10px] "
       />
       </Link>
+      </section>
       <Header className="mt-36">대학교 인증</Header>
       <Form onSubmit={onSubmit}>
         <Label id="univname-label" className="relative" >
@@ -137,7 +138,6 @@ const UnivCert = () => {
         <Button type="submit">대학교 인증 완료하기</Button>
       </Form>
     </div>
-    </section>
   );
 };
 
