@@ -56,11 +56,6 @@ function RegisterForm() {
             onChange={handleImageChange}
             className="hidden"
           />
-          <input
-            type="text"
-            placeholder="주최명"
-            className="p-2 w-full ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
-          />
 
           <input
             type="text"
@@ -70,8 +65,9 @@ function RegisterForm() {
 
           <div className="flex items-center justify-between gap-2">
             <input
-              type="date"
-              className="p-2 px-4 w-full h-[40px] ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+              type="text"
+              placeholder="주최명"
+              className="p-2 w-full ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
             />
             {/* 카테고리 선택 드롭다운 */}
             <div className="relative w-full">
@@ -106,6 +102,16 @@ function RegisterForm() {
                 </div>
               )}
             </div>
+          </div>
+          <div className="flex items-center justify-between gap-2">
+            <input
+              type="date"
+              className="p-2 px-4 w-full h-[40px] ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+            />
+            <input
+              type="date"
+              className="p-2 px-4 w-full h-[40px] ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+            />
           </div>
           {/* 설명 입력 필드 */}
           <textarea
