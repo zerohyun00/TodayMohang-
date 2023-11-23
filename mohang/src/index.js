@@ -11,6 +11,7 @@ import MyEvent from "./pages/MyEvent";
 import Home from "./pages/Home";
 import TodayEvents from "./pages/TodayEvents";
 import UnivCert from "./pages/UnivCert";
+import RegisterForm from "./pages/RegisterForm";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/myEvent",
         element: <MyEvent />,
+      },
+      {
+        path: "/event/regist",
+        element: <RegisterForm />,
       },
       {
         path: "/today",
