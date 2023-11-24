@@ -6,21 +6,20 @@ import {
   Input,
   Label,
 } from "../styles/login_styles";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import React, { useCallback, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useCallback, useState } from "react";
 import backIcon from "../assets/images/back.png";
 import beforecheck from "../assets/images/beforecheck.png";
 import check from "../assets/images/check.png";
+import { HandleUnivLogin, HandleUnivcode } from "../api/auth";
 
 const UnivCert = () => {
   const [signUpError, setSignUpError] = useState(false);
   const [signUpSuccess, setSignUpSuccess] = useState(false);
-  const [mismatchError, setMismatchError] = useState(false);
   const [email, onChangeEmail] = useInput("");
   const [univname, onChangeUnivname] = useInput("");
   const [univpassword, , setUnivPassword] = useInput("");
-  const [univpasswordCheck, , setUnivPasswordCheck] = useInput("");
+  const navigate = useNavigate();
 
   const onChangePassword = useCallback(
     (e) => {
@@ -29,30 +28,45 @@ const UnivCert = () => {
     [setUnivPassword]
   );
 
-  const onChangeUnivPasswordCheck = useCallback(
-    (e) => {
-      setUnivPasswordCheck(e.target.value);
-    },
-    [univpassword, setUnivPasswordCheck]
-  );
+  const onSendUnivCert = async (e) => {
+    e.preventDefault();
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!univname || !univname.trim()) {
-        return;
-      }
-        axios
-          .post("/api/users", { univname, email })
-          .then(() => {
-            setSignUpSuccess(true);
-          })
-          .catch((error) => {
-            setSignUpError(error.response?.data?.statusCode === 403);
-          });
-      },
-    [email, univname]
-  );
+    try {
+      const userData = {
+        "univName": univname,
+        "univ_email": email,
+      };
+
+      await HandleUnivLogin(userData);
+
+      setSignUpSuccess(true);
+      setSignUpError(false);
+      navigate('/succesUnivCert');
+    } catch (error) {
+      setSignUpSuccess(false);
+      setSignUpError(true);
+    }
+  };
+
+  const oncertUnivCode = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userData = {
+        "certCode": univpassword,
+        "univName": univname,
+        "univ_email": email,
+      };
+
+      await HandleUnivcode(userData);
+
+      setSignUpSuccess(true);
+      setSignUpError(false);
+    } catch (error) {
+      setSignUpSuccess(false);
+      setSignUpError(true);
+    }
+  };
 
   return (
     <div id="container">
@@ -66,7 +80,7 @@ const UnivCert = () => {
       </Link>
       </section>
       <Header className="mt-36">대학교 인증</Header>
-      <Form onSubmit={onSubmit}>
+      <Form>
         <Label id="univname-label" className="relative" >
           <div className="flex items-center">
             <Input
@@ -77,7 +91,7 @@ const UnivCert = () => {
               value={univname}
               onChange={onChangeUnivname}
             />
-            {univname.includes('대학교') ? (
+            {univname.includes('대학') ? (
               <img
                 src={check}
                 alt="check"
@@ -117,7 +131,7 @@ const UnivCert = () => {
             )}       
           </div>
         </Label>
-        <Button type="submit">인증번호 전송</Button>
+        <Button type="submit" onClick={onSendUnivCert}>인증번호 전송</Button>
         <Label id="password-label" className="relative">
           <div className="flex items-center">
             <Input
@@ -128,14 +142,22 @@ const UnivCert = () => {
               value={univpassword}
               onChange={onChangePassword}
             />
-            <img
+            {univpassword.length === 4 ? (
+              <img
+                src={check}
+                alt="check"
+                className="absolute right-2 top-1/3 transform -translate-y-1/2"
+              />
+            ) : (
+              <img
                 src={beforecheck}
                 alt="beforecheck"
                 className="absolute right-2 top-1/3 transform -translate-y-1/2"
               />
+            )}  
           </div>
         </Label>
-        <Button type="submit">대학교 인증 완료하기</Button>
+        <Button type="submit" onClick={oncertUnivCode}>대학교 인증 완료하기</Button>
       </Form>
     </div>
   );
