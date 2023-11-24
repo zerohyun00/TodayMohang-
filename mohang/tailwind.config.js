@@ -12,7 +12,7 @@ module.exports = {
         gray2: "#EEEEEE",
         gray3: "#D0D0D0",
         white: "#FAFAFA",
-        festival: "#FFF7AE",
+        festival: "#FFD5D5",
         food: "#76C735",
         music: "#3C7CB8",
         extra: "#8C4EBD",

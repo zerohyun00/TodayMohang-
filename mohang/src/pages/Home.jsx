@@ -1,4 +1,4 @@
-import { getAllEvents } from "../api/events";
+import { fetchEvents, getAllEvents } from "../api/events";
 import { HandleLogin, HandleSignup } from "../api/tmp";
 import BtnNav from "../components/BtnNav";
 
@@ -17,7 +17,7 @@ function Home() {
       >
         login
       </button>
-      <button onClick={() => getAllEvents()} className="p-4 bg-blue-500">
+      <button onClick={() => fetchEvents()} className="p-4 bg-blue-500">
         get Evenet
       </button>
       <BtnNav />
