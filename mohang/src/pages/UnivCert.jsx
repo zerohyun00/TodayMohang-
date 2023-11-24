@@ -81,7 +81,7 @@ const UnivCert = () => {
       </section>
       <Header className="mt-36">대학교 인증</Header>
       <Form>
-        <Label id="univname-label" className="relative" >
+        <Label id="univname-label" className="relative">
           <div className="flex items-center">
             <Input
               placeholder="학교명"
