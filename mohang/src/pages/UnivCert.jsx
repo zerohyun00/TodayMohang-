@@ -1,11 +1,5 @@
 import useInput from "../hooks/useInput";
-import {
-  Button,
-  Form,
-  Header,
-  Input,
-  Label,
-} from "../styles/login_styles";
+import { Button, Form, Header, Input, Label } from "../styles/login_styles";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useCallback, useState } from "react";
 import backIcon from "../assets/images/back.png";
@@ -33,15 +27,15 @@ const UnivCert = () => {
 
     try {
       const userData = {
-        "univName": univname,
-        "univ_email": email,
+        univName: univname,
+        univ_email: email,
       };
 
       await HandleUnivLogin(userData);
 
       setSignUpSuccess(true);
       setSignUpError(false);
-      navigate('/succesUnivCert');
+      // navigate('/succesUnivCert');
     } catch (error) {
       setSignUpSuccess(false);
       setSignUpError(true);
@@ -53,9 +47,9 @@ const UnivCert = () => {
 
     try {
       const userData = {
-        "certCode": univpassword,
-        "univName": univname,
-        "univ_email": email,
+        certCode: univpassword,
+        univName: univname,
+        univ_email: email,
       };
 
       await HandleUnivcode(userData);
@@ -71,13 +65,13 @@ const UnivCert = () => {
   return (
     <div id="container">
       <section className="flex flex-col px-[22px] py-4">
-      <Link to="#">
-      <img
-        src={backIcon}
-        alt="backIcon"
-        className=" object-cover w-[30px] h-[30px] mt-[10px] "
-      />
-      </Link>
+        <Link to="#">
+          <img
+            src={backIcon}
+            alt="backIcon"
+            className=" object-cover w-[30px] h-[30px] mt-[10px] "
+          />
+        </Link>
       </section>
       <Header className="mt-36">대학교 인증</Header>
       <Form>
@@ -91,7 +85,7 @@ const UnivCert = () => {
               value={univname}
               onChange={onChangeUnivname}
             />
-            {univname.includes('대학') ? (
+            {univname.includes("대학") ? (
               <img
                 src={check}
                 alt="check"
@@ -103,7 +97,7 @@ const UnivCert = () => {
                 alt="beforecheck"
                 className="absolute right-2 top-1/3 transform -translate-y-1/2"
               />
-            )}       
+            )}
           </div>
         </Label>
         <Label id="email-label" className="relative">
@@ -116,7 +110,7 @@ const UnivCert = () => {
               value={email}
               onChange={onChangeEmail}
             />
-              {email.includes('@') ? (
+            {email.includes("@") ? (
               <img
                 src={check}
                 alt="check"
@@ -128,10 +122,12 @@ const UnivCert = () => {
                 alt="beforecheck"
                 className="absolute right-2 top-1/3 transform -translate-y-1/2"
               />
-            )}       
+            )}
           </div>
         </Label>
-        <Button type="submit" onClick={onSendUnivCert}>인증번호 전송</Button>
+        <Button type="submit" onClick={onSendUnivCert}>
+          인증번호 전송
+        </Button>
         <Label id="password-label" className="relative">
           <div className="flex items-center">
             <Input
@@ -154,10 +150,12 @@ const UnivCert = () => {
                 alt="beforecheck"
                 className="absolute right-2 top-1/3 transform -translate-y-1/2"
               />
-            )}  
+            )}
           </div>
         </Label>
-        <Button type="submit" onClick={oncertUnivCode}>대학교 인증 완료하기</Button>
+        <Button type="submit" onClick={oncertUnivCode}>
+          대학교 인증 완료하기
+        </Button>
       </Form>
     </div>
   );
