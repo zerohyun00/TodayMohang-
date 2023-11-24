@@ -5,9 +5,10 @@ import logo from "../assets/images/logo2.png";
 import { Link } from "react-router-dom";
 
 function BtnNav() {
-  const NAV_STYLE = "flex gap-1 flex-col items-center justify-center";
+  const NAV_STYLE =
+    "flex gap-1 flex-col items-center justify-center overflow-hidden";
   return (
-    <section className="fixed bottom-0 w-[99%] h-20 bg-white grid grid-cols-4 items-center text-center">
+    <section className="z-10 fixed left-0 bottom-0 w-[100%] overflow-hidden grid grid-cols-4 h-20 bg-white">
       <Link to="/today" className={NAV_STYLE}>
         <img src={logo} alt="logo" className="w-[24px] h-[24px]" />
         <span className="text-xs">오늘의 행사</span>
