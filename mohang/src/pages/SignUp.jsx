@@ -6,14 +6,16 @@ import {
   Input,
   Label,
   LinkContainer,
-  Success
+  Success,
+  Error
 } from "../styles/login_styles";
-import { HandleRegister } from "../api/auth";
 import { Link } from "react-router-dom";
 import React, { useCallback, useState } from "react";
 import LogInLogos from "../assets/images/LogInLogos.png";
 import beforecheck from "../assets/images/beforecheck.png";
 import check from "../assets/images/check.png";
+import axios from "axios";
+import { BASE_URL } from "../static";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState(false);
@@ -42,7 +44,7 @@ const SignUp = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       if (!email || !nickname || !password || !passwordCheck) {
         setSignUpSuccess(false);
@@ -55,16 +57,25 @@ const SignUp = () => {
         return;
       }
       const userData = {
-        email : email,
-        nickname : nickname,
-        password : password,
+        email: email,
+        nickname: nickname,
+        password: password,
       };
-      
-      await HandleRegister(userData);
-
-      // 등록 결과에 따라 상태를 업데이트하려면 필요한 경우
-      setSignUpSuccess(true);
-      setSignUpError(false);
+  
+      await axios
+        .post(`${BASE_URL}/user/signup`, userData)
+        .then((res) => {
+          console.log(res);
+          // 등록 결과에 따라 상태를 업데이트하려면 필요한 경우
+          setSignUpSuccess(true);
+          setSignUpError(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          // 등록 오류 처리
+          setSignUpSuccess(false);
+          setSignUpError(true);
+        });
     } catch (error) {
       // 등록 오류 처리
       setSignUpSuccess(false);
@@ -159,6 +170,7 @@ const SignUp = () => {
         </Label>
         <Button type="submit">회원가입 하기</Button>
         {signUpSuccess && <Success>회원가입되었습니다! 로그인해주세요.</Success>}
+        {signUpError && <Error>회원가입에 실패했습니다.</Error>}
       </Form>
       <LinkContainer>
         <Link to="/Login" className="black mt-7">
