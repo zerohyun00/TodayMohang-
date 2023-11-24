@@ -1,5 +1,6 @@
 import { IoMdHeartEmpty } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Tag from "./Tag";
 function EventCard({ id, category, title, organizer, start, end, imageUrl }) {
   return (
     <Link
@@ -43,11 +44,3 @@ function EventCard({ id, category, title, organizer, start, end, imageUrl }) {
 }
 
 export default EventCard;
-
-function Tag({ category }) {
-  return (
-    <div className="text-[8px] bg-primary rounded-full px-2 text-white">
-      {category}
-    </div>
-  );
-}
