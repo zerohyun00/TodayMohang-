@@ -86,6 +86,9 @@ export const Error = tw.div`
 `;
 
 export const Success = tw.div`
+  flex
+  items-center
+  justify-center
   text-green-600
   font-bold
 `;

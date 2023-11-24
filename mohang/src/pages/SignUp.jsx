@@ -7,9 +7,9 @@ import {
   Input,
   Label,
   LinkContainer,
-  Success,
+  Success
 } from "../styles/login_styles";
-import axios from "axios";
+import { HandleRegister } from "../api/auth";
 import { Link } from "react-router-dom";
 import React, { useCallback, useState } from "react";
 import LogInLogos from "../assets/images/LogInLogos.png";
@@ -41,27 +41,27 @@ const SignUp = () => {
     [password, setPasswordCheck]
   );
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!nickname || !nickname.trim()) {
-        return;
-      }
-      if (!mismatchError) {
-        setSignUpError(false);
-        setSignUpSuccess(false);
-        axios
-          .post("/api/users", { nickname, email, password })
-          .then(() => {
-            setSignUpSuccess(true);
-          })
-          .catch((error) => {
-            setSignUpError(error.response?.data?.statusCode === 403);
-          });
-      }
-    },
-    [email, nickname, password, mismatchError]
-  );
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userData = {
+        email : email,
+        nickname : nickname,
+        password : password,
+      };
+      
+      await HandleRegister(userData);
+
+      // 등록 결과에 따라 상태를 업데이트하려면 필요한 경우
+      setSignUpSuccess(true);
+      setSignUpError(false);
+    } catch (error) {
+      // 등록 오류 처리
+      setSignUpSuccess(false);
+      setSignUpError(true);
+    }
+  };
 
   return (
     <div
@@ -147,12 +147,9 @@ const SignUp = () => {
               />
             )}            
           </div>
-          {signUpError && <Error>이미 가입된 이메일입니다. </Error>}
-          {signUpSuccess && (
-            <Success>회원가입되었습니다! 로그인해주세요.</Success>
-          )}
         </Label>
         <Button type="submit">회원가입 하기</Button>
+        {signUpSuccess && <Success>회원가입되었습니다! 로그인해주세요.</Success>}
       </Form>
       <LinkContainer>
         <Link to="/Login" className="black mt-7">
