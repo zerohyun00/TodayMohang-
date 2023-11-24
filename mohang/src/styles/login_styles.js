@@ -18,7 +18,7 @@ export const Form = tw.form`
 `;
 
 export const Label = tw.label`
-  mb-1 sm:mb-4 
+  mb-0
   block
   text-left
   pb-2

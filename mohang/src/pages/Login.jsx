@@ -1,5 +1,5 @@
 import useInput from "../hooks/useInput";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Error,
@@ -9,29 +9,34 @@ import {
   Label,
   LinkContainer,
 } from "../styles/login_styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogInLogos from "../assets/images/LogInLogos.png";
 import { HandleLogin } from "../api/auth";
-
 
 const LogIn = () => {
   const [logInError, setLogInError] = useState(false);
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
+  const navigate = useNavigate();
+
+  
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    if (!email || !password ) {
+      // Handle the case where some fields are empty (e.g., show an error message)
+      setLogInError(true);
+      return;
+    }
     try {
       const userData = {
         email : email, 
         password : password,
       };
-
+      navigate('/today');
       await HandleLogin(userData);
-
-      // 등록 결과에 따라 상태를 업데이트하려면 필요한 경우
       setLogInError(false);
+
     } catch (error) {
       // 등록 오류 처리
       setLogInError(true);
@@ -74,9 +79,6 @@ const LogIn = () => {
               onChange={onChangePassword}
             />
           </div>
-          {logInError && (
-            <Error>이메일과 비밀번호 조합이 일치하지 않습니다.</Error>
-          )}
         </Label>
         <Button type="submit">로그인 하기</Button>
       </Form>
