@@ -9,41 +9,34 @@ import {
   Label,
   LinkContainer,
 } from "../styles/login_styles";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import LogInLogos from "../assets/images/LogInLogos.png";
+import { HandleLogin } from "../api/auth";
+
 
 const LogIn = () => {
   const [logInError, setLogInError] = useState(false);
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      setLogInError(false);
-      axios
-        .post(
-          "/api/users/login",
-          { email, password },
-          {
-            withCredentials: true,
-          }
-        )
-        .then(() => {
-          console.log("success");
-        })
-        .catch((error) => {
-          setLogInError(error.response?.data?.statusCode === 401);
-        });
-    },
-    [email, password]
-  );
 
-  // console.log(error, userData);
-  // if (!error && userData) {
-  //   console.log('로그인됨', userData);
-  //   return <Redirect to="/workspace/sleact/channel/일반" />;
-  // }
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userData = {
+        email : email, 
+        password : password,
+      };
+
+      await HandleLogin(userData);
+
+      // 등록 결과에 따라 상태를 업데이트하려면 필요한 경우
+      setLogInError(false);
+    } catch (error) {
+      // 등록 오류 처리
+      setLogInError(true);
+    }
+  };
 
   return (
     
