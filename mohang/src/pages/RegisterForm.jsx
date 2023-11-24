@@ -1,20 +1,33 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Layout from "../layout/Layout";
 import { FaAngleDown } from "react-icons/fa";
 import { BiImageAdd } from "react-icons/bi";
 import { categories } from "../static/category";
+import axios from "axios";
+import { BASE_URL } from "../static";
 
 function RegisterForm() {
   const [imagePreview, setImagePreview] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const imageInputRef = useRef();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("카테고리 선택");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [organizer, setOrganizer] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [description, setDescription] = useState("");
 
   const triggerFileSelectPopup = () => imageInputRef.current.click();
+
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      console.log(file);
+      setImageFile(file); // 파일 객체를 상태에 저장
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -23,17 +36,49 @@ function RegisterForm() {
     }
   };
 
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     setDropdownOpen(false);
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    const jsonData = {
+      title: title,
+      organizer: organizer,
+      start: startDate,
+      end: endDate,
+      category: selectedCategory,
+      content: description,
+    };
+    const jsonBlob = new Blob([JSON.stringify(jsonData)], {
+      type: "application/json",
+    });
+    formData.append("data", jsonBlob);
+
+    if (imageFile) {
+      formData.append("file", imageFile, imageFile.name);
+    }
+
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${BASE_URL}/post/create`,
+        data: formData,
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Layout title="행사 등록하기">
       <div className="container mx-auto p-4">
-        <form className="space-y-4">
-          {/* 이미지 업로드하는 부분 */}
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div
             className="w-full flex justify-center items-center ring-2 ring-primary bg-inputBg rounded-xl p-4 cursor-pointer"
             onClick={triggerFileSelectPopup}
@@ -61,6 +106,8 @@ function RegisterForm() {
             type="text"
             placeholder="제목"
             className="p-2 w-full ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
           <div className="flex items-center justify-between gap-2">
@@ -68,14 +115,15 @@ function RegisterForm() {
               type="text"
               placeholder="주최명"
               className="p-2 w-full ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+              value={organizer}
+              onChange={(e) => setOrganizer(e.target.value)}
             />
-            {/* 카테고리 선택 드롭다운 */}
             <div className="relative w-full">
               <div
                 className="flex w-full h-[40px] justify-between items-center p-2 px-4 ring-2 ring-primary bg-inputBg rounded-md cursor-pointer"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={toggleDropdown}
               >
-                <span>{selectedCategory}</span>
+                <span>{selectedCategory || "카테고리 선택"}</span>
                 <FaAngleDown
                   className={`transform transition-transform ${
                     dropdownOpen ? "rotate-180" : "rotate-0"
@@ -103,21 +151,29 @@ function RegisterForm() {
               )}
             </div>
           </div>
+
           <div className="flex items-center justify-between gap-2">
             <input
               type="date"
               className="p-2 px-4 w-full h-[40px] ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
             />
             <input
               type="date"
               className="p-2 px-4 w-full h-[40px] ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
-          {/* 설명 입력 필드 */}
+
           <textarea
             placeholder="내용을 입력하세요"
             className="p-2 w-full ring-2 ring-primary bg-inputBg rounded-md placeholder:text-center h-[80px]"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
+
           <button
             type="submit"
             className="w-full text-white bg-primary p-3 px-4 rounded-lg"
