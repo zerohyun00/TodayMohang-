@@ -44,6 +44,16 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
+      if (!email || !nickname || !password || !passwordCheck) {
+        setSignUpSuccess(false);
+        setSignUpError(true);
+        return;
+      }
+  
+      if (password !== passwordCheck) {
+        setMismatchError(true);
+        return;
+      }
       const userData = {
         email : email,
         nickname : nickname,

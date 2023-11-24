@@ -23,7 +23,11 @@ const LogIn = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    if (!email || !password ) {
+      // Handle the case where some fields are empty (e.g., show an error message)
+      setLogInError(true);
+      return;
+    }
     try {
       const userData = {
         email : email, 
@@ -75,9 +79,6 @@ const LogIn = () => {
               onChange={onChangePassword}
             />
           </div>
-          {logInError && (
-            <Error>이메일과 비밀번호 조합이 일치하지 않습니다.</Error>
-          )}
         </Label>
         <Button type="submit">로그인 하기</Button>
       </Form>
