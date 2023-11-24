@@ -1,7 +1,12 @@
 import { IoMdHeartEmpty } from "react-icons/io";
-function EventCard({ category, title, organizer, start, end, imageUrl }) {
+import { Link } from "react-router-dom";
+import Tag from "./Tag";
+function EventCard({ id, category, title, organizer, start, end, imageUrl }) {
   return (
-    <section className="flex flex-col rounded-xl overflow-hidden ring-1">
+    <Link
+      to={`/event/${id}`}
+      className="flex flex-col rounded-xl overflow-hidden ring-1"
+    >
       <div className="object-cover w-full h-[120px] relative">
         {imageUrl ? (
           <>
@@ -34,16 +39,8 @@ function EventCard({ category, title, organizer, start, end, imageUrl }) {
           <Tag category={category} />
         </div>
       </div>
-    </section>
+    </Link>
   );
 }
 
 export default EventCard;
-
-function Tag({ category }) {
-  return (
-    <div className="text-[8px] bg-primary rounded-full px-2 text-white">
-      {category}
-    </div>
-  );
-}

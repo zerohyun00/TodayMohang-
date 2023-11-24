@@ -45,8 +45,8 @@ function TodayEvents() {
         ))}
       </div>
       <div className="grid grid-cols-2 gap-4 w-full">
-        {filteredEvents.map((event, index) => (
-          <EventCard key={index} {...event} />
+        {filteredEvents.map((event) => (
+          <EventCard key={event.id} {...event} />
         ))}
       </div>
       <BtnNav />

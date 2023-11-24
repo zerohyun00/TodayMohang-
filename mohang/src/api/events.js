@@ -47,6 +47,18 @@ export const fetchEvents = async () => {
     throw err; // 오류를 다시 던져서 외부에서 처리할 수 있게 함
   }
 };
+
+export const eventDetail = async (id) => {
+  try {
+    const response = await apiInstance.get(`/post/${id}`);
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    throw err; // 오류를 다시 던져서 외부에서 처리할 수 있게 함
+  }
+};
+
 // const getAllEvents = async () => {
 //   try {
 //     const response = await axios.get(`${BASE_URL}/posts`, {
