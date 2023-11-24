@@ -1,9 +1,13 @@
 import Icon from "../assets/images/logos.png";
 import Title from "../components/Title";
 
-function Layout({ children, title }) {
+function Layout({ children, title, isNav }) {
   return (
-    <section className="flex flex-col px-[22px] py-4 h-[100vh]">
+    <section
+      className={`flex flex-col px-[22px] py-4 h-[100vh] overflow-scroll relative ${
+        isNav ? "pb-[90px]" : ""
+      }`}
+    >
       <img
         src={Icon}
         alt="logo"
