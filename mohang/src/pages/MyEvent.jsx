@@ -3,10 +3,12 @@ import CTABtn from "../components/CTABtn";
 import Layout from "../layout/Layout";
 import { IoMdAddCircle } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import useRequireAuth from "../hooks/useRequireAuth";
 
 function MyEvent() {
   const [univAuth, setUnivAuth] = useState(true);
   const navigate = useNavigate();
+  useRequireAuth();
   return (
     <Layout title="나의 행사">
       <div className="flex flex-col justify-center items-center h-[60vh]">
@@ -14,13 +16,13 @@ function MyEvent() {
           <>
             <div className="text-center text-xl semibold text-gray3 space-y-7">
               <span>아직 등록한 행사가 없어요!</span>
-              <p>
+              <div>
                 <h4>아래의 플러스 버튼을 눌러</h4>
                 <h4>행사를 등록해보세요</h4>
-              </p>
+              </div>
             </div>
             <IoMdAddCircle
-              onClick={() => navigate("/form/regist")}
+              onClick={() => navigate("/event/regist")}
               size={60}
               className="fixed bottom-10 right-7 text-primary"
             />

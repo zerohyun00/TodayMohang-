@@ -1,12 +1,15 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Layout from "../layout/Layout";
 import { FaAngleDown } from "react-icons/fa";
 import { BiImageAdd } from "react-icons/bi";
 import { categories } from "../static/category";
 import axios from "axios";
 import { BASE_URL } from "../static";
+import useRequireUnivAuth from "../hooks/useRequireUnivAuth";
+import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
+  const navigate = useNavigate();
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const imageInputRef = useRef();
@@ -18,7 +21,7 @@ function RegisterForm() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
-
+  useRequireUnivAuth();
   const triggerFileSelectPopup = () => imageInputRef.current.click();
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
@@ -70,13 +73,14 @@ function RegisterForm() {
         },
       });
       console.log(response.data);
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <Layout title="행사 등록하기">
+    <Layout isBack={true} title="행사 등록하기">
       <div className="container mx-auto p-4">
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div

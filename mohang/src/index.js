@@ -16,6 +16,7 @@ import EventDetail from "./pages/EventDetail";
 import CalendarPage from "./pages/CalendarPage";
 import TodayEventsLayout from "./pages/TodayEventsLayout";
 import Test from "./pages/Test";
+import LoginMiddleware from "./pages/LoginMiddleware";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <LogIn />,
+      },
+      {
+        path: "loginMiddleware",
+        element: <LoginMiddleware />,
       },
       {
         path: "mypage",

@@ -13,7 +13,6 @@ function TodayEvents({ events }) {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category.name);
 
-    // Scroll to the #categoryselected element
     const categorySelectedElement = document.getElementById("categoryselected");
     if (categorySelectedElement) {
       categorySelectedElement.scrollIntoView({ behavior: "smooth" });

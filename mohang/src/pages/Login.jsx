@@ -11,7 +11,7 @@ import {
 } from "../styles/login_styles";
 import { Link, useNavigate } from "react-router-dom";
 import LogInLogos from "../assets/images/LogInLogos.png";
-import { HandleLogin } from "../api/auth";
+import { HandleLogin, performLogin } from "../api/auth";
 import useScrollToTop from "../hooks/useScrollTop";
 
 const LogIn = () => {
@@ -24,24 +24,23 @@ const LogIn = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      // Handle the case where some fields are empty (e.g., show an error message)
       setLogInError(true);
       return;
     }
+
     try {
       const userData = {
         email: email,
         password: password,
       };
-      navigate("/today");
       await HandleLogin(userData);
       setLogInError(false);
+      navigate("/loginMiddleware");
     } catch (error) {
-      // 등록 오류 처리
       setLogInError(true);
+      console.error("Login error:", error);
     }
   };
-
   return (
     <div className="flex flex-col gap-4 justify-center items-center h-[100vh] overflow-hidden">
       <img src={LogInLogos} alt="LogInLogos" />

@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import { eventDetail } from "../api/events";
 import { useParams } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
-import DetailLayout from "../layout/DetailLayout";
 import Tag from "../components/Tag";
 import { FaHeart } from "react-icons/fa";
-import BackHeader from "../components/Header";
 import Layout from "../layout/Layout";
 
 function EventDetail() {
