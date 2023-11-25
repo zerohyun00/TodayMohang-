@@ -43,8 +43,10 @@ function CalendarPage() {
         onClickDay={handleDateClick} // Add the click handler
       />
 
-      <h1>
-        {selectedDate ? `선택된 날짜: ${selectedDate}` : "날짜를 선택해주세요"}
+      <h1 className="my-4 text-center semibold text-lg">
+        {selectedDate
+          ? `선택된 날짜: ${selectedDate}`
+          : "원하시는 날짜를 선택해주세요"}
       </h1>
       <TodayEvents />
       <BtnNav />
