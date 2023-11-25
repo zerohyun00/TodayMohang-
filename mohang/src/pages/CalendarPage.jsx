@@ -16,6 +16,10 @@ function CalendarPage() {
   const dayEvents = useFetchDayEvents(selectedDate);
 
   useEffect(() => {
+    const today = format(new Date(), "yyyy-MM-dd");
+    setSelectedDate(today);
+  }, []);
+  useEffect(() => {
     const eventCounts = allEvents.reduce((acc, event) => {
       const startDate = parseISO(event.start);
       const endDate = parseISO(event.end);
@@ -63,7 +67,7 @@ function CalendarPage() {
     }
   }, [selectedDate]);
   return (
-    <Layout title={"행사 캘린더"}>
+    <Layout title={"행사 캘린더"} isNav={true}>
       <Calendar
         tileContent={tileContent}
         formatMonthYear={formatMonthYear}

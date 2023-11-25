@@ -22,10 +22,9 @@ function Bookmark() {
     fetchEvents();
   }, []);
   return (
-    <Layout title="즐겨찾기" isBack={true}>
+    <Layout title="즐겨찾기" isBack={true} isNav={true}>
       {events.length > 0 ? (
         <div className="flex flex-col justify-center items-center">
-          <p className="text-xl text-gray1">즐겨찾기한 행사</p>
           <div id="categoryselected" className="grid grid-cols-2 gap-4 w-full">
             {events.map((event) => (
               <EventCard key={event.id} {...event} />
@@ -41,9 +40,9 @@ function Bookmark() {
             </p>
             <CTABtn url={"/today"} title={"행사 보러가기"} />
           </div>
-          <BtnNav />
         </>
       )}
+      <BtnNav />
     </Layout>
   );
 }

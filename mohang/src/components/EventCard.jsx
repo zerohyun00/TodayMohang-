@@ -1,7 +1,40 @@
-import { IoMdHeartEmpty } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
 import Tag from "./Tag";
-function EventCard({ id, category, title, organizer, start, end, imageUrl }) {
+import { addBookMarkEvent, deleteBookMarkEvent } from "../api/bookmark";
+import { useEffect, useState } from "react";
+function EventCard({
+  id,
+  category,
+  title,
+  organizer,
+  start,
+  end,
+  imageUrl,
+  bookmark,
+}) {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  useEffect(() => {
+    setIsBookmarked(bookmark);
+  }, [bookmark]);
+
+  const toggleBookmark = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    try {
+      if (isBookmarked) {
+        await deleteBookMarkEvent(id);
+      } else {
+        await addBookMarkEvent(id);
+      }
+      setIsBookmarked(!isBookmarked);
+    } catch (error) {
+      console.error("Error bookmark.js", error);
+    }
+  };
   return (
     <Link
       to={`/event/${id}`}
@@ -15,10 +48,17 @@ function EventCard({ id, category, title, organizer, start, end, imageUrl }) {
               alt="event"
               className="w-full h-full rounded-t-xl object-cover"
             />
-            <IoMdHeartEmpty
-              onClick={() => console.log("즐겨찾기 추가")}
-              className="absolute top-3 right-3"
-            />
+            <button
+              onClick={toggleBookmark}
+              className="absolute top-3 right-3 z-10"
+              style={{ background: "none", border: "none" }}
+            >
+              {isBookmarked ? (
+                <FaHeart className="text-red-500" />
+              ) : (
+                <FaRegHeart />
+              )}
+            </button>
           </>
         ) : (
           <div className="w-full h-full rounded-t-xl object-cover flex items-center justify-center text-center bg-gray-200 overflow-hidden">
