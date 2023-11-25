@@ -13,7 +13,6 @@ function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(null);
   const allEvents = useFetchEvents();
   const [events, setEvents] = useState({});
-  const [selectedCategory, setSelectedCategory] = useState("전체");
   const dayEvents = useFetchDayEvents(selectedDate);
 
   useEffect(() => {
@@ -31,15 +30,6 @@ function CalendarPage() {
 
     setEvents(eventCounts);
   }, [allEvents]);
-  //   useEffect(() => {
-  //     const eventCounts = allEvents.reduce((acc, event) => {
-  //       const date = event.start;
-  //       acc[date] = (acc[date] || 0) + 1;
-  //       return acc;
-  //     }, {});
-
-  //     setEvents(eventCounts);
-  //   }, [allEvents]);
 
   const toLocalISOString = (date) => {
     const offset = date.getTimezoneOffset();
@@ -59,9 +49,19 @@ function CalendarPage() {
   };
 
   const handleDateClick = (value) => {
-    setSelectedDate(toLocalISOString(value));
+    const dateString = toLocalISOString(value);
+    setSelectedDate(events[dateString] ? dateString : null);
   };
 
+  const todayEventsData = selectedDate ? dayEvents : [];
+  useEffect(() => {
+    if (selectedDate) {
+      const selectedElement = document.getElementById("selected");
+      if (selectedElement) {
+        selectedElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [selectedDate]);
   return (
     <Layout title={"행사 캘린더"}>
       <Calendar
@@ -75,7 +75,9 @@ function CalendarPage() {
           ? `선택된 날짜: ${selectedDate}`
           : "원하시는 날짜를 선택해주세요"}
       </h1>
-      <TodayEvents events={dayEvents} />
+      <div id="selected">
+        <TodayEvents events={todayEventsData} />
+      </div>
       <BtnNav />
     </Layout>
   );
