@@ -8,8 +8,10 @@ import BtnNav from "../components/BtnNav";
 import useFetchEvents from "../hooks/useFetchEvents";
 import useFetchDayEvents from "../hooks/useFetchDayEvents";
 import { eachDayOfInterval, format, parseISO } from "date-fns";
+import useRequireAuth from "../hooks/useRequireAuth";
 
 function CalendarPage() {
+  useRequireAuth();
   const [selectedDate, setSelectedDate] = useState(null);
   const allEvents = useFetchEvents();
   const [events, setEvents] = useState({});
