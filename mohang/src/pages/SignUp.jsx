@@ -16,6 +16,7 @@ import beforecheck from "../assets/images/beforecheck.png";
 import check from "../assets/images/check.png";
 import axios from "axios";
 import { BASE_URL } from "../static";
+import useScrollToTop from "../hooks/useScrollTop";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState(false);
@@ -25,7 +26,7 @@ const SignUp = () => {
   const [nickname, onChangeNickname] = useInput("");
   const [password, , setPassword] = useInput("");
   const [passwordCheck, , setPasswordCheck] = useInput("");
-
+  useScrollToTop();
   const onChangePassword = useCallback(
     (e) => {
       setPassword(e.target.value);

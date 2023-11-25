@@ -12,11 +12,13 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import LogInLogos from "../assets/images/LogInLogos.png";
 import { HandleLogin } from "../api/auth";
+import useScrollToTop from "../hooks/useScrollTop";
 
 const LogIn = () => {
   const [logInError, setLogInError] = useState(false);
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
+  useScrollToTop();
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {

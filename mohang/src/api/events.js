@@ -25,17 +25,17 @@ const getEvents = async () => {
 //   }
 // };
 
-const getAllEvents = async () => {
-  try {
-    await axios.get("data/events.json").then((res) => {
-      console.log(res.data);
-      return res.data;
-    });
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
+// const getAllEvents = async () => {
+//   try {
+//     await axios.get("data/events.json").then((res) => {
+//       console.log(res.data);
+//       return res.data;
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     throw error;
+//   }
+// };
 
 export const getEventsByDate = async (date) => {
   try {
@@ -84,4 +84,4 @@ export const eventDetail = async (id) => {
 //     throw error;
 //   }
 // };
-export { getEvents, getAllEvents };
+export { getEvents };

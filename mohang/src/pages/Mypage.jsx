@@ -12,7 +12,7 @@ function Mypage() {
     <Layout isBack={true}>
       <div className="flex flex-col items-center relative h-[100vh] px-5 pt-[100px] gap-5">
         <Link
-          to={univAuth ? "" : "/univAuth"}
+          to={univAuth ? "" : "/univCert"}
           className={`${
             univAuth ? "bg-primary" : "bg-gray2"
           } w-[140px] rounded-full text-center text-xs py-1 mb-[30px]`}
