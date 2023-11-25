@@ -3,6 +3,7 @@ import CTABtn from "../components/CTABtn";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../layout/Layout";
 import useRequireAuth from "../hooks/useRequireAuth";
+import BtnNav from "../components/BtnNav";
 
 function Mypage() {
   const univAuth = sessionStorage.getItem("authenticated") === "true";
@@ -15,7 +16,7 @@ function Mypage() {
     navigate("/login");
   };
   return (
-    <Layout isBack={true}>
+    <Layout isBack={true} isNav={true}>
       <div className="flex flex-col items-center relative h-[100vh] px-5 pt-[100px] gap-5">
         <Link
           to={univAuth ? "" : "/univCert"}
@@ -39,6 +40,7 @@ function Mypage() {
           로그아웃하기
         </button>
       </div>
+      <BtnNav />
     </Layout>
   );
 }

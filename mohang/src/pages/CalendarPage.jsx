@@ -63,7 +63,7 @@ function CalendarPage() {
     }
   }, [selectedDate]);
   return (
-    <Layout title={"행사 캘린더"}>
+    <Layout title={"행사 캘린더"} isNav={true}>
       <Calendar
         tileContent={tileContent}
         formatMonthYear={formatMonthYear}

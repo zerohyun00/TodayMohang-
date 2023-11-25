@@ -22,7 +22,7 @@ function Bookmark() {
     fetchEvents();
   }, []);
   return (
-    <Layout title="즐겨찾기" isBack={true}>
+    <Layout title="즐겨찾기" isBack={true} isNav={true}>
       {events.length > 0 ? (
         <div className="flex flex-col justify-center items-center">
           <p className="text-xl text-gray1">즐겨찾기한 행사</p>
