@@ -15,6 +15,7 @@ import RegisterForm from "./pages/RegisterForm";
 import EventDetail from "./pages/EventDetail";
 import CalendarPage from "./pages/CalendarPage";
 import TodayEventsLayout from "./pages/TodayEventsLayout";
+import Test from "./pages/Test";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "event/:id",
         element: <EventDetail />,
+      },
+      {
+        path: "test",
+        element: <Test />,
       },
     ],
   },

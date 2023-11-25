@@ -3,16 +3,8 @@ import EventCard from "../components/EventCard";
 import { fetchEvents } from "../api/events";
 import { kcategories } from "../static/category";
 
-function TodayEvents() {
-  const [events, setEvents] = useState([]);
+function TodayEvents({ events }) {
   const [selectedCategory, setSelectedCategory] = useState("전체"); // 초기값을 "전체"로 설정
-
-  useEffect(() => {
-    fetchEvents()
-      .then((data) => setEvents(data))
-      .catch((err) => console.error("Error fetching events:", err));
-  }, []);
-
   // 선택된 카테고리에 따라 이벤트 필터링
   const filteredEvents =
     selectedCategory === "전체"
