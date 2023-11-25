@@ -37,6 +37,17 @@ const getAllEvents = async () => {
   }
 };
 
+export const getEventsByDate = async (date) => {
+  try {
+    const response = await apiInstance.get(`/post/date/${date}`);
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    throw err; // 오류를 다시 던져서 외부에서 처리할 수 있게 함
+  }
+};
+
 export const fetchEvents = async () => {
   try {
     const response = await apiInstance.get("/posts");
