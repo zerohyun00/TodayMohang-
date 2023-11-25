@@ -9,7 +9,7 @@ import {
   Success,
   Error,
 } from "../styles/login_styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useCallback, useState } from "react";
 import LogInLogos from "../assets/images/LogInLogos.png";
 import beforecheck from "../assets/images/beforecheck.png";
@@ -19,6 +19,7 @@ import { BASE_URL } from "../static";
 import useScrollToTop from "../hooks/useScrollTop";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [signUpError, setSignUpError] = useState(false);
   const [signUpSuccess, setSignUpSuccess] = useState(false);
   const [mismatchError, setMismatchError] = useState(false);
@@ -69,6 +70,7 @@ const SignUp = () => {
           console.log(res);
           // 등록 결과에 따라 상태를 업데이트하려면 필요한 경우
           setSignUpSuccess(true);
+          navigate("/login");
           setSignUpError(false);
         })
         .catch((err) => {
