@@ -41,11 +41,8 @@ const LogIn = () => {
   };
 
   return (
-    <div
-      id="container"
-      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-24"
-    >
-      <img src={LogInLogos} alt="LogInLogos" className="mx-auto my-auto" />
+    <div className="flex flex-col gap-4 justify-center items-center h-[100vh] overflow-hidden">
+      <img src={LogInLogos} alt="LogInLogos" />
       <Header>로그인</Header>
       <Form onSubmit={onSubmit}>
         <Label id="email-label">
