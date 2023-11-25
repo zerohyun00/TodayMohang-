@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
-import Layout from "../layout/Layout";
-import BtnNav from "../components/BtnNav";
 import { fetchEvents } from "../api/events";
 import { kcategories } from "../static/category";
 
@@ -26,7 +24,7 @@ function TodayEvents() {
     setSelectedCategory(category.name);
   };
   return (
-    <Layout title="오늘의 행사" isNav={true}>
+    <>
       <div className="flex items-center justify-around mb-6">
         {kcategories.map((category, index) => (
           <button
@@ -49,8 +47,7 @@ function TodayEvents() {
           <EventCard key={event.id} {...event} />
         ))}
       </div>
-      <BtnNav />
-    </Layout>
+    </>
   );
 }
 

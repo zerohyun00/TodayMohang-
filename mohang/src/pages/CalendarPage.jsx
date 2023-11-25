@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/calendar.css";
 import Layout from "../layout/Layout";
+import TodayEvents from "./TodayEvents";
 
 function CalendarPage() {
+  const [selectedDate, setSelectedDate] = useState(null); // State to store the selected date
   const events = {
     "2023-11-13": 2,
     "2023-11-18": 2,
+    // ... more events
   };
 
   const toLocalISOString = (date) => {
@@ -24,12 +27,25 @@ function CalendarPage() {
   };
 
   const formatMonthYear = (locale, date) => {
-    return toLocalISOString(date).slice(0, 7); // YYYY-MM format
+    return toLocalISOString(date).slice(0, 7);
+  };
+
+  const handleDateClick = (value) => {
+    setSelectedDate(toLocalISOString(value)); // Update state when a date is clicked
   };
 
   return (
     <Layout title={"행사 캘린더"}>
-      <Calendar tileContent={tileContent} formatMonthYear={formatMonthYear} />
+      <Calendar
+        tileContent={tileContent}
+        formatMonthYear={formatMonthYear}
+        onClickDay={handleDateClick} // Add the click handler
+      />
+
+      <h1>
+        {selectedDate ? `선택된 날짜: ${selectedDate}` : "날짜를 선택해주세요"}
+      </h1>
+      <TodayEvents />
     </Layout>
   );
 }
