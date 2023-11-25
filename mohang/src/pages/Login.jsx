@@ -19,24 +19,21 @@ const LogIn = () => {
   const [password, onChangePassword] = useInput("");
   const navigate = useNavigate();
 
-  
-
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password ) {
+    if (!email || !password) {
       // Handle the case where some fields are empty (e.g., show an error message)
       setLogInError(true);
       return;
     }
     try {
       const userData = {
-        email : email, 
-        password : password,
+        email: email,
+        password: password,
       };
-      navigate('/today');
+      navigate("/today");
       await HandleLogin(userData);
       setLogInError(false);
-
     } catch (error) {
       // 등록 오류 처리
       setLogInError(true);
@@ -44,16 +41,11 @@ const LogIn = () => {
   };
 
   return (
-    
     <div
       id="container"
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-24"
     >
-      <img
-        src={LogInLogos}
-        alt="LogInLogos"
-        className="mx-auto my-auto"
-      />
+      <img src={LogInLogos} alt="LogInLogos" className="mx-auto my-auto" />
       <Header>로그인</Header>
       <Form onSubmit={onSubmit}>
         <Label id="email-label">
