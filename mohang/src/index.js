@@ -13,6 +13,7 @@ import TodayEvents from "./pages/TodayEvents";
 import UnivCert from "./pages/UnivCert";
 import RegisterForm from "./pages/RegisterForm";
 import EventDetail from "./pages/EventDetail";
+import CalendarPage from "./pages/CalendarPage";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "bookmark",
         element: <Bookmark />,
+      },
+      {
+        path: "calendar",
+        element: <CalendarPage />,
       },
       {
         path: "myEvent",

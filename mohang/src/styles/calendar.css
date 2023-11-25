@@ -1,0 +1,66 @@
+/* Add a bottom border to the weekday headers */
+.react-calendar__month-view__weekdays__weekday {
+  border-bottom: 2px solid #cccccc; /* Adjust color and thickness as needed */
+  padding-bottom: 5px; /* Adds some space between the line and the text */
+}
+
+.react-calendar__tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 60px;
+  border: none;
+  border-radius: 20%;
+  transition: all 0.1s ease-in-out;
+}
+
+.events-number {
+  font-size: 0.75em;
+  color: #fff;
+  background-color: #ffc14a;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 5px;
+}
+
+.react-calendar__navigation__next2-button,
+.react-calendar__navigation__prev2-button {
+  display: none;
+}
+/* Style for highlighted tiles */
+.react-calendar__tile.highlight {
+  background: orange;
+  color: black;
+}
+
+/* Remove default padding from calendar */
+.react-calendar {
+  padding: 2px;
+  border: none;
+  width: 100%;
+}
+
+/* Additional styles for events-container if needed */
+.events-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make sure the day tiles are positioned relatively to allow absolute positioning of children */
+.react-calendar__month-view__days__day {
+  position: relative; /* Allows absolute positioning within each tile */
+}
+
+/* Set the selected tile's background to transparent */
+.react-calendar__tile--active {
+  background: transparent !important; /* Ensures override of any existing background styles */
+  border: 2px solid #ffc14a !important; /* Add a border to highlight the selection */
+  color: inherit; /* Optional: Ensures the text color remains consistent with other tiles */
+}
