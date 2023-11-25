@@ -13,8 +13,6 @@ const UnivCert = () => {
   const [email, onChangeEmail] = useInput("");
   const [univname, onChangeUnivname] = useInput("");
   const [univpassword, , setUnivPassword] = useInput("");
-  const navigate = useNavigate();
-
   const onChangePassword = useCallback(
     (e) => {
       setUnivPassword(e.target.value);

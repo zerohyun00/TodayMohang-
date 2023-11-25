@@ -55,7 +55,18 @@ export const fetchEvents = async () => {
     return response.data;
   } catch (err) {
     console.error(err);
-    throw err; // 오류를 다시 던져서 외부에서 처리할 수 있게 함
+    throw err;
+  }
+};
+
+export const getMyEvents = async () => {
+  try {
+    const response = await apiInstance.get("/mypage/events");
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 };
 
@@ -66,7 +77,7 @@ export const eventDetail = async (id) => {
     return response.data;
   } catch (err) {
     console.error(err);
-    throw err; // 오류를 다시 던져서 외부에서 처리할 수 있게 함
+    throw err;
   }
 };
 
