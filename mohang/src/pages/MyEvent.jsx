@@ -2,9 +2,11 @@ import { useState } from "react";
 import CTABtn from "../components/CTABtn";
 import Layout from "../layout/Layout";
 import { IoMdAddCircle } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 function MyEvent() {
   const [univAuth, setUnivAuth] = useState(true);
+  const navigate = useNavigate();
   return (
     <Layout title="나의 행사">
       <div className="flex flex-col justify-center items-center h-[60vh]">
@@ -18,6 +20,7 @@ function MyEvent() {
               </p>
             </div>
             <IoMdAddCircle
+              onClick={() => navigate("/form/regist")}
               size={60}
               className="fixed bottom-10 right-7 text-primary"
             />
