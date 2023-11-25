@@ -7,7 +7,7 @@ import {
   Label,
   LinkContainer,
   Success,
-  Error
+  Error,
 } from "../styles/login_styles";
 import { Link } from "react-router-dom";
 import React, { useCallback, useState } from "react";
@@ -44,14 +44,14 @@ const SignUp = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       if (!email || !nickname || !password || !passwordCheck) {
         setSignUpSuccess(false);
         setSignUpError(true);
         return;
       }
-  
+
       if (password !== passwordCheck) {
         setMismatchError(true);
         return;
@@ -61,7 +61,7 @@ const SignUp = () => {
         nickname: nickname,
         password: password,
       };
-  
+
       await axios
         .post(`${BASE_URL}/user/signup`, userData)
         .then((res) => {
@@ -86,16 +86,12 @@ const SignUp = () => {
   return (
     <div
       id="container"
-      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      className="flex flex-col gap-4 justify-center items-center h-[100vh] overflow-hidden"
     >
-      <img
-        src={LogInLogos}
-        alt="LogInLogos"
-        className="mx-auto my-auto"
-      />
+      <img src={LogInLogos} alt="LogInLogos" className="" />
       <Header>회원가입</Header>
       <Form onSubmit={onSubmit}>
-        <Label id="nickname-label" className="relative" >
+        <Label id="nickname-label" className="relative">
           <div className="flex items-center">
             <Input
               placeholder="닉네임"
@@ -117,7 +113,7 @@ const SignUp = () => {
               value={email}
               onChange={onChangeEmail}
             />
-              {email.includes('@') ? (
+            {email.includes("@") ? (
               <img
                 src={check}
                 alt="check"
@@ -129,7 +125,7 @@ const SignUp = () => {
                 alt="beforecheck"
                 className="absolute right-2 top-1/3 transform -translate-y-1/2"
               />
-            )}       
+            )}
           </div>
         </Label>
         <Label id="password-label" className="relative">
@@ -153,7 +149,8 @@ const SignUp = () => {
               name="password-check"
               value={passwordCheck}
               onChange={onChangePasswordCheck}
-            />{passwordCheck && passwordCheck === password ? (
+            />
+            {passwordCheck && passwordCheck === password ? (
               <img
                 src={check}
                 alt="check"
@@ -165,11 +162,13 @@ const SignUp = () => {
                 alt="beforecheck"
                 className="absolute right-2 top-1/3 transform -translate-y-1/2"
               />
-            )}            
+            )}
           </div>
         </Label>
         <Button type="submit">회원가입 하기</Button>
-        {signUpSuccess && <Success>회원가입되었습니다! 로그인해주세요.</Success>}
+        {signUpSuccess && (
+          <Success>회원가입되었습니다! 로그인해주세요.</Success>
+        )}
         {signUpError && <Error>회원가입에 실패했습니다.</Error>}
       </Form>
       <LinkContainer>

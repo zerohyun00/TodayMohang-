@@ -6,6 +6,7 @@ import DetailLayout from "../layout/DetailLayout";
 import Tag from "../components/Tag";
 import { FaHeart } from "react-icons/fa";
 import BackHeader from "../components/Header";
+import Layout from "../layout/Layout";
 
 function EventDetail() {
   const [detail, setDetail] = useState([]);
@@ -25,8 +26,7 @@ function EventDetail() {
   }, [id]);
   return (
     <>
-      <BackHeader />
-      <DetailLayout title={detail.title || "제목을 가져오는 중..."}>
+      <Layout title={detail.title || "제목을 가져오는 중..."} isBack={true}>
         {isLoading ? (
           <SyncLoader color="#36d7b7" />
         ) : (
@@ -53,24 +53,12 @@ function EventDetail() {
                 className="w-full  object-cover h-[280px] "
               />
               <p className="p-4 min-h-[80px] max-h-[300px] overflow-scroll border-t-2 border-primary text-xs">
-                {detail.content}국회는 국가의 예산안을 심의·확정한다. 제3항의
-                승인을 얻지 못한 때에는 그 처분 또는 명령은 그때부터 효력을
-                상실한다. 이 경우 그 명령에 의하여 개정 또는 폐지되었던 법률은
-                그 명령이 승인을 얻지 못한 때부터 당연히 효력을 회복한다.
-                국무총리·국무위원 또는 정부위원은 국회나 그 위원회에 출석하여
-                국정처리상황을 보고하거나 의견을 진술하고 질문에 응답할 수 있다.
-                대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이
-                공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에
-                의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지
-                아니할 때에는 국회의장이 이를 공포한다. 공무원의 직무상
-                불법행위로 손해를 받은 국민은 법률이 정하는 바에 의하여 국가
-                또는 공공단체에 정당한 배상을 청구할 수 있다. 이 경우 공무원
-                자신의 책임은 면제되지 아니한다.
+                {detail.content}
               </p>
             </div>
           </section>
         )}
-      </DetailLayout>
+      </Layout>
     </>
   );
 }
