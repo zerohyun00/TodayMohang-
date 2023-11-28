@@ -28,7 +28,7 @@
 | :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: |
 |   <img width="160px" src="https://github.com/2023-AHEUNGTHON/Team_1/assets/94633589/f7f60b7b-6a04-41e8-a38f-8cd619fd6e4a" > |             <img width="160px" src="https://github.com/2023-AHEUNGTHON/Team_1/assets/94633589/f7f60b7b-6a04-41e8-a38f-8cd619fd6e4a" >    |
 |   [@zerohyun__](https://www.instagram.com/zerohyun__/)   |    [@bishoe01](https://www.instagram.com/bishoe01/)  |
-| Sunkyul.Univ | Hanyang.Univ(ERICA) |
+| Sungkyul.Univ | Hanyang.Univ(ERICA) |
 
 **Back-End-Developer**
 
