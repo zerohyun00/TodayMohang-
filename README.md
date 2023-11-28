@@ -73,23 +73,16 @@
 ## 화면 구성 📺
 | 로그인 페이지  |  메인 페이지   | 캘린더 페이지 | 
 | :-------------------------------------------: | :------------: | :------------: | 
-|  <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/34dfafa0-963f-4c22-8e18-557a88465ab0"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/fcf2a17c-f5ec-4e08-a1e0-3bd23e9eefff"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/23ec042b-0763-4b2f-ab63-3fcc01d87f67">
->  
-| oo 페이지   |  oo 페이지   |  
-| 사진 | 사진 |
+|  <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/34dfafa0-963f-4c22-8e18-557a88465ab0"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/fcf2a17c-f5ec-4e08-a1e0-3bd23e9eefff"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/23ec042b-0763-4b2f-ab63-3fcc01d87f67">  
+| 대학인증 페이지   |  즐겨찾기 페이지   | 마이 페이지 | 나의 행사 |
+| <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/facc12c4-7496-4ab1-9ac1-013db1341cca"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/bc2276c4-1b11-4c11-8c08-7bd379b7ec5d"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/f1892aaf-5d32-40c7-bba5-8861f241a604"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/1f14bd90-7cb4-4341-9e79-59d01be597b5"> |
 
 ---
 ## 핵심 기능 📦
 
 ### ⭐️ 우리는 이런 기능이 있어요!
-- 기능 설명을 해주세요!
-- 기능 설명을 해주세요!
-
-### ⭐️ 우리는 이런 기능이 있어요!
-- 기능 설명을 해주세요!
-
-### ⭐️ 우리는 이런 기능이 있어요!
-- 기능 설명을 해주세요!
+- 대학인증 API를 이용하여 대학인증을 통한 각 학교의 행사를 등록할 수 있습니다!
+- 캘린더 뷰를 통해 한눈에 행사를 볼 수 있고 간편하게 즐겨찾기와 관심행사를 등록할 수 있습니다!
 
 ---
 ## 아키텍쳐
