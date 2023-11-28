@@ -62,6 +62,8 @@
 ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+### Design
+![Figma](https://img.shields.io/badge/figma-%23F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
 ### Communication
 ![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)
@@ -69,9 +71,10 @@
 
 ---
 ## 화면 구성 📺
-| 메인 페이지  |  oo 페이지   |
-| :-------------------------------------------: | :------------: |
-| 사진 | 사진 |  
+| 로그인 페이지  |  메인 페이지   | 캘린더 페이지 | 
+| :-------------------------------------------: | :------------: | :------------: | 
+|  <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/34dfafa0-963f-4c22-8e18-557a88465ab0"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/fcf2a17c-f5ec-4e08-a1e0-3bd23e9eefff"> | <img width="200px" src="https://github.com/zerohyun00/TodayMohang-/assets/113604373/23ec042b-0763-4b2f-ab63-3fcc01d87f67">
+>  
 | oo 페이지   |  oo 페이지   |  
 | 사진 | 사진 |
 
